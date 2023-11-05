@@ -1,15 +1,26 @@
 import React from 'react';
 import { nanoid } from 'nanoid';
 
-function Sort() {
-  const [currentDropdownToggle, setDrodownToggle] = React.useState(false);
-  const [currentSortChoice, setCurrentSortChoice] = React.useState(0);
+import ascIcon from '../assets/img/sort-asc.png';
+import descIcon from '../assets/img/sort-desc.png';
 
-  const toggleStates = ['умолчанию', 'популярности', 'цене', 'алфавиту'];
+function Sort({
+  currentDropdownToggle,
+  currentSortChoice,
+  isAscendingOrder,
+  setDrodownToggle,
+  setCurrentSortChoice,
+  setIsAscendingOrder,
+}) {
+  const toggleStates = ['умолчанию', 'рейтингу', 'цене', 'алфавиту'];
 
   const onClickToggle = (index) => {
     setCurrentSortChoice(index);
     setDrodownToggle(false);
+  };
+
+  const changeSortOrder = () => {
+    setIsAscendingOrder((prevSortOrder) => !prevSortOrder);
   };
 
   return (
@@ -31,6 +42,10 @@ function Sort() {
         <div onClick={() => setDrodownToggle(!currentDropdownToggle)}>
           <b>Сортировка по:</b>
           <span>{toggleStates[currentSortChoice]}</span>
+        </div>
+
+        <div className="sort__sort-order" onClick={changeSortOrder}>
+          <img src={isAscendingOrder ? ascIcon : descIcon} alt="Ascending Icon" />
         </div>
       </div>
 

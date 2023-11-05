@@ -6,6 +6,7 @@
   &__label {
     display: flex;
     align-items: center;
+    column-gap: 5px;
     
     & svg {
       margin-right: 8px;
@@ -20,6 +21,26 @@
       border-bottom: 1px dashed $orange;
       cursor: pointer;
     }
+  }
+
+  &__sort-order {
+    margin-left: 16px;
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      width: 1px;
+      height: 25px;
+      background-color: $black;
+      left: -8px;
+    }
+
+
+    img {
+      height: 25px;
+    }
+
   }
 
   &__arrow {
