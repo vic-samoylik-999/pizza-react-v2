@@ -2,7 +2,10 @@ import React from 'react';
 import pizzaLogo from '../assets/img/pizza-logo.svg';
 import { Link } from 'react-router-dom';
 
-function Header() {
+import searchIcon from '../assets/img/searchIcon.svg';
+import closeIcon from '../assets/img/closeIcon.svg';
+
+function Header({ searchValue, setSearchValue }) {
   return (
     <div className="header">
       <div className="container">
@@ -15,6 +18,17 @@ function Header() {
             </div>
           </div>
         </Link>
+        <div className="header__search search">
+          <input
+            value={searchValue}
+            onChange={(event) => setSearchValue(event.target.value)}
+            name="search-input"
+            className="search__input"
+            placeholder="Поиск пиццы..."
+          />
+          <img className="search__loupe" src={searchIcon} alt="Search Icon" />
+          {searchValue && <img className="search__close" src={closeIcon} alt="Close Icon" />}
+        </div>
         <div className="header__cart">
           <Link to="/cart" className="button button--cart">
             <span>520 ₽</span>
