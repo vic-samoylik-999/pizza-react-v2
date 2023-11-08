@@ -1,11 +1,14 @@
 import React from 'react';
 import pizzaLogo from '../assets/img/pizza-logo.svg';
 import { Link } from 'react-router-dom';
+import { SearchContext } from '../App';
 
 import searchIcon from '../assets/img/searchIcon.svg';
 import closeIcon from '../assets/img/closeIcon.svg';
 
-function Header({ searchValue, setSearchValue }) {
+function Header() {
+  const { searchValue, setSearchValue } = React.useContext(SearchContext);
+
   return (
     <div className="header">
       <div className="container">
