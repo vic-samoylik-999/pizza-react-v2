@@ -1,0 +1,44 @@
+.search {
+    position: relative;
+    &__input {
+      outline: none;
+      height: 32px;
+      padding: 5px 30px;
+      border: thin solid #7f7f7f;
+      border-radius: 9px;
+      transition: .2s ease;
+      &:focus {
+        border-color: #191919;
+        transition: .2s ease;
+        box-shadow: 0 0 5px rgba(0,0,0, .2);
+        & + .search__loupe {
+          opacity: 1;
+        }
+      }
+    }
+  
+    &__loupe {
+      position: absolute;
+      height: 18px;
+      width: 18px;
+      top: 7px;
+      left: 8px;
+      opacity: .3;
+      transition: 1.3 ease;
+    }
+  
+    &__close {
+      position: absolute;
+      height: 18px;
+      width: 18px;
+      top: 7px;
+      right: 8px;
+      opacity: .3;
+      cursor: pointer;
+      &:hover {
+        opacity: .6;
+      }
+    }
+  }
+  
+  

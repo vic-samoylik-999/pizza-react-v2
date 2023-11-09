@@ -1,11 +1,16 @@
 import React from 'react';
 import { SearchContext } from '../../App';
 
+import './SearchComponent.scss';
 import searchIcon from '../../assets/img/searchIcon.svg';
 import closeIcon from '../../assets/img/closeIcon.svg';
 
 function SearchComponent() {
   const { searchValue, setSearchValue } = React.useContext(SearchContext);
+
+  const clearSearchField = () => {
+    setSearchValue('');
+  };
 
   return (
     <div className="header__search search">
@@ -17,7 +22,14 @@ function SearchComponent() {
         placeholder="Поиск пиццы..."
       />
       <img className="search__loupe" src={searchIcon} alt="Search Icon" />
-      {searchValue && <img className="search__close" src={closeIcon} alt="Close Icon" />}
+      {searchValue && (
+        <img
+          className="search__close"
+          src={closeIcon}
+          alt="Close Icon"
+          onClick={() => clearSearchField()}
+        />
+      )}
     </div>
   );
 }
