@@ -8,7 +8,7 @@ import PizzaSkeleton from '../components/PizzaBlock/PizzaSkeleton';
 import { SearchContext } from '../App';
 
 function Home() {
-  const { searchValue, setSearchValue } = React.useContext(SearchContext);
+  const { searchValue } = React.useContext(SearchContext);
   const [items, setItems] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
   const url = 'https://6543995f01b5e279de20a355.mockapi.io/items';
