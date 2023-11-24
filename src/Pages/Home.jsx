@@ -5,6 +5,7 @@ import Categories from '../components/Categories';
 import Sort from '../components/Sort';
 import PizzaBlock from '../components/PizzaBlock';
 import PizzaSkeleton from '../components/PizzaBlock/PizzaSkeleton';
+import { SearchContext } from '../components/Layout';
 
 function Home() {
   const [items, setItems] = React.useState([]);
@@ -13,6 +14,7 @@ function Home() {
   const [currentDropdownToggle, setDrodownToggle] = React.useState(false);
   const [currentSortChoice, setCurrentSortChoice] = React.useState(0);
   const [isAscendingOrder, setIsAscendingOrder] = React.useState(true);
+  const { searchValue } = React.useContext(SearchContext);
 
   const toggleStates = ['умолчанию', 'rating', 'price', 'title'];
 
@@ -40,6 +42,13 @@ function Home() {
     getData(url);
   }, [currentCategory, currentSortChoice, isAscendingOrder]);
 
+  const skeletons = [...new Array(8)].map(() => <PizzaSkeleton key={nanoid()} />);
+  const pizzas = searchValue
+    ? items
+        .filter((item) => item.title.toLowerCase().includes(searchValue.toLowerCase()))
+        .map((item) => <PizzaBlock key={nanoid()} {...item} />)
+    : items.map((item) => <PizzaBlock key={nanoid()} {...item} />);
+
   return (
     <div className="container">
       <div className="content__top">
@@ -55,11 +64,7 @@ function Home() {
         />
       </div>
       <h2 className="content__title">Все пиццы</h2>
-      <div className="content__items">
-        {isLoading
-          ? [...new Array(8)].map(() => <PizzaSkeleton key={nanoid()} />)
-          : items.map((item) => <PizzaBlock key={nanoid()} {...item} />)}
-      </div>
+      <div className="content__items">{isLoading ? skeletons : pizzas}</div>
     </div>
   );
 }

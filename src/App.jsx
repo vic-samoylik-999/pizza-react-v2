@@ -1,18 +1,24 @@
 import React from 'react';
-import { Outlet } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
-import Header from './components/Header';
+import Layout from './components/Layout';
+import Home from './Pages/Home';
+import Cart from './Pages/Cart';
+import PizzaItself from './Pages/PizzaItself';
+import NotFound from './Pages/NotFound';
 
 import './scss/app.scss';
 
 function App() {
   return (
-    <div className="wrapper">
-      <Header />
-      <div className="content">
-        <Outlet />
-      </div>
-    </div>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index path="/" element={<Home />} />
+        <Route path="cart" element={<Cart />} />
+        <Route path=":slug" element={<PizzaItself />} />
+        <Route path="/*" element={<NotFound />} />
+      </Route>
+    </Routes>
   );
 }
 
