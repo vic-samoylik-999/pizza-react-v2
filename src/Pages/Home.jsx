@@ -7,7 +7,6 @@ import PizzaBlock from '../components/PizzaBlock';
 import PizzaSkeleton from '../components/PizzaBlock/PizzaSkeleton';
 import { SearchContext } from '../components/Layout';
 
-
 function Home() {
   const { searchValue } = React.useContext(SearchContext);
   const [items, setItems] = React.useState([]);
@@ -16,7 +15,6 @@ function Home() {
   const [currentDropdownToggle, setDrodownToggle] = React.useState(false);
   const [currentSortChoice, setCurrentSortChoice] = React.useState(0);
   const [isAscendingOrder, setIsAscendingOrder] = React.useState(true);
-  const { searchValue } = React.useContext(SearchContext);
 
   const toggleStates = ['умолчанию', 'rating', 'price', 'title'];
 
@@ -39,11 +37,9 @@ function Home() {
       const data = await responce.json();
       setItems(data);
       setIsLoading(false);
-      console.log(url);
     }
     getData(url);
   }, [currentCategory, currentSortChoice, isAscendingOrder]);
-
 
   const skeletons = [...new Array(8)].map(() => <PizzaSkeleton key={nanoid()} />);
   const pizzas = searchValue
