@@ -9,7 +9,11 @@ import NotFound from './Pages/NotFound';
 
 import './scss/app.scss';
 
+export const SearchContext = React.createContext();
+
 function App() {
+  const [searchValue, setSearchValue] = React.useState('');
+
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
