@@ -1,14 +1,8 @@
 import React from 'react';
 import { nanoid } from 'nanoid';
 
-function Categories() {
-  const [currentIndex, setCurrentIndex] = React.useState(0);
-
+function Categories({ currentCategory, setCurrentCategory }) {
   const categories = ['Все', 'Мясные', 'Вегетарианская', 'Гриль', 'Острые', 'Закрытые'];
-
-  const changeActiveIndex = (chosenIndex) => {
-    setCurrentIndex(chosenIndex);
-  };
 
   return (
     <div className="categories">
@@ -17,8 +11,8 @@ function Categories() {
           return (
             <li
               key={nanoid()}
-              className={currentIndex === index ? 'active' : ''}
-              onClick={() => changeActiveIndex(index)}
+              className={currentCategory === index ? 'active' : ''}
+              onClick={() => setCurrentCategory(index)}
             >
               {item}
             </li>

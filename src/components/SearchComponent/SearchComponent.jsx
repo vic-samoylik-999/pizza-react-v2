@@ -1,5 +1,6 @@
 import React from 'react';
-import { SearchContext } from '../../App';
+import { SearchContext } from '../Layout';
+
 
 import './SearchComponent.scss';
 import searchIcon from '../../assets/img/searchIcon.svg';

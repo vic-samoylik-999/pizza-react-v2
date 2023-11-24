@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import SearchComponent from './SearchComponent/SearchComponent';
 
 function Header() {
+  
   return (
     <div className="header">
       <div className="container">
